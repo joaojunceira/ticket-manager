@@ -1,4 +1,6 @@
 # ticket-manager
+![Travis Build](https://travis-ci.org/joaojunceira/ticket-manager.svg?branch=develop)
+
 Simple app to manage ticketing of Customer Support.
 The tickets are opened by someone from a company customer (anyone can open it) support with information about the cause and Customer information, if customer is not in database it should be inserted.
 
