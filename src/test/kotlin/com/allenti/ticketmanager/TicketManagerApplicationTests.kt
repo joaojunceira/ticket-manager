@@ -1,4 +1,4 @@
-package com.allenti.ticketmanager
+package com.allenti.ticketsmanager
 
 import org.junit.Test
 import org.junit.runner.RunWith
