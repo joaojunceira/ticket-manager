@@ -1,10 +1,12 @@
 package com.allenti.ticketmanager.domain.service.customer
 
 import org.springframework.stereotype.Service
+import reactor.core.publisher.Mono
 
 @Service
 interface CustomerService {
-    fun create()
+    fun create(customerDetails: CustomerDetails) : Mono<CustomerDetails>
 
-    fun get(name: String) : List<CustomerDetails>
+    fun get(id: Long) : Mono<CustomerDetails>
+
 }
