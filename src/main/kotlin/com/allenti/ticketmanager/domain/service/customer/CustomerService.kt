@@ -5,8 +5,9 @@ import reactor.core.publisher.Mono
 
 @Service
 interface CustomerService {
-    fun create(customerDetails: CustomerDetails) : Mono<CustomerDetails>
+	fun create(customerDetails: CustomerDetails): Mono<CustomerDetails>
 
-    fun get(id: Long) : Mono<CustomerDetails>
+	fun get(id: Long): Mono<CustomerDetails>
+
 
 }

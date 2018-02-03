@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class TicketManagerApplication
 
 fun main(args: Array<String>) {
-    runApplication<TicketManagerApplication>(*args)
+	runApplication<TicketManagerApplication>(*args)
 }

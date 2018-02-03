@@ -7,9 +7,11 @@ import reactor.core.publisher.Mono
 
 
 interface TicketRepository {
-    fun create(ticket: Ticket): Mono<Ticket>
-    fun get(id: Long): Mono<Ticket>
-    fun getByName(name: String): Flux<Ticket>
-    fun getByCustomer(customerId: Long): Flux<Ticket>
-    fun getByTag(tags: List<Tag>): Flux<Ticket>
+	fun create(ticket: Ticket): Mono<Ticket>
+	fun get(id: Long): Mono<Ticket>
+	fun getByName(name: String): Flux<Ticket>
+	fun getByCustomer(customerId: Long): Flux<Ticket>
+	fun getByTag(tags: Iterable<Tag>): Flux<Ticket>
+	fun getTags(): Flux<Tag>
+	fun update(ticket: Ticket): Mono<Ticket>
 }

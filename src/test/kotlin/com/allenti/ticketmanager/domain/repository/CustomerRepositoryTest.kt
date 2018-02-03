@@ -5,8 +5,8 @@ import org.junit.Test
 
 class CustomerRepositoryTest {
 
-    @Test
-    fun createCustomerWithAllFields(){
+	@Test
+	fun createCustomerWithAllFields() {
 
-    }
+	}
 }

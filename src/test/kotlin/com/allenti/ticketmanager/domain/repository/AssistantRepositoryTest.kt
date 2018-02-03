@@ -4,9 +4,9 @@ import com.allenti.ticketmanager.infrastructure.repository.mongodb.data.Assistan
 import org.junit.Test
 
 
-class AssistantRepositoryTest(val assistantRepositoryMongo: AssistantRepositoryMongo){
-    @Test
-    fun createAssistantSuccessfully(){
+class AssistantRepositoryTest(val assistantRepositoryMongo: AssistantRepositoryMongo) {
+	@Test
+	fun createAssistantSuccessfully() {
 
-    }
+	}
 }

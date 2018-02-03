@@ -6,8 +6,8 @@ import reactor.core.publisher.Mono
 
 
 interface CustomerRepository {
-    fun create(customer: Customer): Mono<Customer>
-    fun getByName(name: String): Flux<Customer>
-    fun get(id: Long): Mono<Customer>
-    fun update(customer: Customer): Mono<Customer>
+	fun create(customer: Customer): Mono<Customer>
+	fun getByName(name: String): Flux<Customer>
+	fun get(id: Long): Mono<Customer>
+	fun update(customer: Customer): Mono<Customer>
 }
