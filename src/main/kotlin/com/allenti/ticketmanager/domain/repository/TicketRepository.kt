@@ -11,7 +11,7 @@ interface TicketRepository {
 	fun get(id: Long): Mono<Ticket>
 	fun getByName(name: String): Flux<Ticket>
 	fun getByCustomer(customerId: Long): Flux<Ticket>
-	fun getByTag(tags: Iterable<Tag>): Flux<Ticket>
+	fun getByTag(tags: Collection<Tag>): Flux<Ticket>
 	fun getTags(): Flux<Tag>
 	fun update(ticket: Ticket): Mono<Ticket>
 }
