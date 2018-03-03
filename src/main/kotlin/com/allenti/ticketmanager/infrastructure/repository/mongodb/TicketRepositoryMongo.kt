@@ -3,7 +3,6 @@ package com.allenti.ticketmanager.infrastructure.repository.mongodb
 import com.allenti.ticketmanager.domain.model.Tag
 import com.allenti.ticketmanager.domain.model.Ticket
 import com.allenti.ticketmanager.domain.repository.TicketRepository
-import org.reactivestreams.Publisher
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux
@@ -14,7 +13,7 @@ interface TicketRepositoryMongo : ReactiveMongoRepository<Ticket, Long>
 
 class TicketRepositoryImpl(val mongoRepository: TicketRepositoryMongo) : TicketRepository{
 	override fun create(ticket: Ticket): Mono<Ticket> {
-		return mongoRepository.insert(Publisher { ticket }).log().publishNext()
+		return mongoRepository.insert(ticket)
 	}
 
 	override fun get(id: Long): Mono<Ticket> {
@@ -31,10 +30,6 @@ class TicketRepositoryImpl(val mongoRepository: TicketRepositoryMongo) : TicketR
 
 	override fun getByTag(tags: Collection<Tag>): Flux<Ticket> {
 		return mongoRepository.findAll().filter{ t -> t.tags!!.containsAll(tags) }
-	}
-
-	override fun getTags(): Flux<Tag> {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 	}
 
 	override fun update(ticket: Ticket): Mono<Ticket> {
