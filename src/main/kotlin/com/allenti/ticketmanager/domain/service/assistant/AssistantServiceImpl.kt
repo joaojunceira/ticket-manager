@@ -7,6 +7,10 @@ import reactor.core.publisher.Mono
 
 @Component
 class AssistantServiceImpl: AssistantService {
+	override fun get(id: Long): Mono<AssistantDetails> {
+		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+	}
+
 	override fun create(assistantDetails: AssistantDetails): Mono<AssistantDetails> {
 		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
 	}

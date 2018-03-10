@@ -3,6 +3,7 @@ package com.allenti.ticketmanager.infrastructure.repository.mongodb
 
 import com.allenti.ticketmanager.domain.model.Customer
 import com.allenti.ticketmanager.domain.repository.CustomerRepository
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux
@@ -11,7 +12,7 @@ import reactor.core.publisher.Mono
 @Repository
 interface CustomerRepositoryMongo : ReactiveMongoRepository<Customer, Long>
 
-class CustomerRepositoryImpl(val customerRepositoryMongo: CustomerRepositoryMongo) : CustomerRepository{
+class CustomerRepositoryImpl(@Autowired val customerRepositoryMongo: CustomerRepositoryMongo) : CustomerRepository{
 	override fun create(customer: Customer): Mono<Customer> {
 		return customerRepositoryMongo.insert(customer)
 	}

@@ -8,5 +8,6 @@ import reactor.core.publisher.Mono
 interface AssistantService {
 	fun create(assistantDetails: AssistantDetails) : Mono<AssistantDetails>
 	fun getByName(name: String?) : Flux<AssistantDetails>
+	fun get(id: Long): Mono<AssistantDetails>
 	fun update(assistantDetails: AssistantDetails) : Mono<Boolean>
 }

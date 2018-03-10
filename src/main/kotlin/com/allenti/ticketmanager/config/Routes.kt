@@ -1,4 +1,4 @@
-package com.allenti.ticketmanager.api.config
+package com.allenti.ticketmanager.config
 
 
 class Routes {

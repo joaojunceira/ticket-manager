@@ -3,6 +3,7 @@ package com.allenti.ticketmanager.infrastructure.repository.mongodb
 import com.allenti.ticketmanager.domain.model.Tag
 import com.allenti.ticketmanager.domain.model.Ticket
 import com.allenti.ticketmanager.domain.repository.TicketRepository
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux
@@ -11,7 +12,7 @@ import reactor.core.publisher.Mono
 @Repository
 interface TicketRepositoryMongo : ReactiveMongoRepository<Ticket, Long>
 
-class TicketRepositoryImpl(val mongoRepository: TicketRepositoryMongo) : TicketRepository{
+class TicketRepositoryImpl(@Autowired val mongoRepository: TicketRepositoryMongo) : TicketRepository{
 	override fun create(ticket: Ticket): Mono<Ticket> {
 		return mongoRepository.insert(ticket)
 	}
