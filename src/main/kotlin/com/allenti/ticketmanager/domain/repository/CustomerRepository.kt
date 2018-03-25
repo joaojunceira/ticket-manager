@@ -1,9 +1,9 @@
 package com.allenti.ticketmanager.domain.repository
 
 import com.allenti.ticketmanager.domain.model.Customer
+import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-
 
 interface CustomerRepository {
 	fun create(customer: Customer): Mono<Customer>

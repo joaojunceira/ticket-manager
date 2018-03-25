@@ -1,25 +1,27 @@
 package com.allenti.ticketmanager.domain.service.assistant
 
+import com.allenti.ticketmanager.domain.model.Assistant
+import com.allenti.ticketmanager.domain.repository.AssistantRepository
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
 
 
 @Component
-class AssistantServiceImpl: AssistantService {
-	override fun get(id: Long): Mono<AssistantDetails> {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+class AssistantServiceImpl(val assistantRepository: AssistantRepository): AssistantService {
+	override fun get(id: Long): Mono<Assistant> {
+		return assistantRepository.get(id)
 	}
 
-	override fun create(assistantDetails: AssistantDetails): Mono<AssistantDetails> {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+	override fun create(assistant: Assistant): Mono<Assistant> {
+		return assistantRepository.create(assistant)
 	}
 
-	override fun getByName(name: String?): Flux<AssistantDetails> {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+	override fun getByName(name: String?): Flux<Assistant> {
+		return assistantRepository.getByName(name.orEmpty())
 	}
 
-	override fun update(assistantDetails: AssistantDetails): Mono<Boolean> {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+	override fun update(assistant: Assistant): Mono<Boolean> {
+		return assistantRepository.update(assistant)
 	}
 }

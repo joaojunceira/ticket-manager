@@ -1,5 +1,7 @@
 package com.allenti.ticketmanager.domain.service.customer
 
+import com.allenti.ticketmanager.domain.model.Customer
+import com.allenti.ticketmanager.domain.repository.CustomerRepository
 import org.springframework.stereotype.Component
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -7,21 +9,21 @@ import java.util.*
 
 
 @Component
-class CustomerServiceImpl : CustomerService {
-	override fun getByName(name: String?): Flux<CustomerDetails> {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+class CustomerServiceImpl(val customerRepository: CustomerRepository) : CustomerService {
+	override fun getByName(name: String?): Flux<Customer> {
+		return customerRepository.getByName(name.orEmpty())
 	}
 
-	override fun update(customerDetails: CustomerDetails): Mono<Boolean> {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+	override fun update(customer: Customer): Mono<Boolean> {
+		return customerRepository.update(customer).hasElement()
 	}
 
-	override fun create(customerDetails: CustomerDetails): Mono<CustomerDetails> {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+	override fun create(customer: Customer): Mono<Customer> {
+		return customerRepository.update(customer)
 	}
 
-	override fun get(id: Long): Mono<CustomerDetails> {
-		TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+	override fun get(id: Long): Mono<Customer> {
+		return customerRepository.get(id)
 	}
 
 }

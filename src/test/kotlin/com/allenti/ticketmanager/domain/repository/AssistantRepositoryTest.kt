@@ -3,22 +3,20 @@ package com.allenti.ticketmanager.domain.repository
 
 import com.allenti.ticketmanager.domain.model.Assistant
 import com.allenti.ticketmanager.domain.model.Role
-
-import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.TestFactory
-import org.junit.jupiter.api.Assertions.assertSame
-import org.junit.jupiter.api.extension.ExtendWith
-
+import org.junit.Assert.assertSame
+import org.junit.Test
+import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.test.context.junit.jupiter.SpringExtension
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.test.context.junit4.SpringRunner
 
-@ExtendWith(SpringExtension::class)
+@RunWith(SpringRunner::class)
+@SpringBootTest
 class AssistantRepositoryTest{
 
 	@Autowired lateinit var assistantRepository: AssistantRepository
 
-	@TestFactory
-	fun assistantsDummy() = listOf(
+	val assistantsDummy = listOf(
 			Assistant(1,"John","Smith",Role.LEAD),
 			Assistant(2, "Marie","Curie",Role.OWNER),
 			Assistant(3,"John","Wayne",Role.SUPPORT))
@@ -33,7 +31,7 @@ class AssistantRepositoryTest{
 		assertSame(result.block(), expectedResult)
 	}
 
-	@Test fun updateAssistant(){
+	/*@Test fun updateAssistant(){
 
 	}
 
@@ -43,5 +41,5 @@ class AssistantRepositoryTest{
 
 	@Test fun insertAssistantFails(){
 
-	}
+	}*/
 }

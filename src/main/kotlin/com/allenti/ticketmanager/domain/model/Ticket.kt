@@ -3,7 +3,7 @@ package com.allenti.ticketmanager.domain.model
 import org.springframework.data.annotation.Id
 
 data class Ticket(@Id val id: Long, val title: String, val description: String, val tags: List<Tag>?,
-                  val customer: Customer, val owner: Assistant, val state: TicketState)
+                  val customer: Customer, val owner: Assistant, var state: TicketState)
 
 data class Tag(val name: String)
 

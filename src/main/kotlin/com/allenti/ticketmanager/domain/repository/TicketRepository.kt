@@ -2,9 +2,9 @@ package com.allenti.ticketmanager.domain.repository
 
 import com.allenti.ticketmanager.domain.model.Tag
 import com.allenti.ticketmanager.domain.model.Ticket
+import org.springframework.stereotype.Service
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
-
 
 interface TicketRepository {
 	fun create(ticket: Ticket): Mono<Ticket>
@@ -13,4 +13,5 @@ interface TicketRepository {
 	fun getByCustomer(customerId: Long): Flux<Ticket>
 	fun getByTag(tags: Collection<Tag>): Flux<Ticket>
 	fun update(ticket: Ticket): Mono<Ticket>
+	fun delete(id: Long): Mono<Boolean>
 }

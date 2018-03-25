@@ -5,6 +5,7 @@ import com.allenti.ticketmanager.domain.model.Ticket
 import com.allenti.ticketmanager.domain.repository.TicketRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.mongodb.repository.ReactiveMongoRepository
+import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
 import reactor.core.publisher.Flux
 import reactor.core.publisher.Mono
@@ -12,7 +13,12 @@ import reactor.core.publisher.Mono
 @Repository
 interface TicketRepositoryMongo : ReactiveMongoRepository<Ticket, Long>
 
+@Component
 class TicketRepositoryImpl(@Autowired val mongoRepository: TicketRepositoryMongo) : TicketRepository{
+	override fun delete(id: Long): Mono<Boolean> {
+		return mongoRepository.deleteById(id).hasElement()
+	}
+
 	override fun create(ticket: Ticket): Mono<Ticket> {
 		return mongoRepository.insert(ticket)
 	}
@@ -36,5 +42,4 @@ class TicketRepositoryImpl(@Autowired val mongoRepository: TicketRepositoryMongo
 	override fun update(ticket: Ticket): Mono<Ticket> {
 		return mongoRepository.save(ticket)
 	}
-
 }
